@@ -1,0 +1,6 @@
+# Generated files
+*.elf
+*.hex
+
+.sconsign.dblite
+build/
