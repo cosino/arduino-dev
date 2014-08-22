@@ -24,10 +24,10 @@ protocol.
 
 The code implements a slave with the following holding registers:
 
-  Reg	  Function           Action
-  0x0000  No Op              Null
-  0x0001  Led on GPIO 53     0 = led off     - 1 = led on
-  0x0002  Switch on GPIO 52  0 = switch open - 1 = switch close
+    Reg	  Function           Action
+    0x0000  No Op              Null
+    0x0001  Led on GPIO 53     0 = led off     - 1 = led on
+    0x0002  Switch on GPIO 52  0 = switch open - 1 = switch close
 
 You can get access to these registers by using the modbus utils
 available here:
@@ -44,9 +44,9 @@ switch (I just used a cable to connect or not to 5V) at GPIO 52, then
 load the code. If everything works well you should see the led turned
 on. Also using the modbus-dump utility you should get:
 
-   # ./modbus-dump -d rtu:/dev/ttyS3,115200,8N1 1 1 2
-   modbus-dump: reg[1]=1/0x0001
-   modbus-dump: reg[2]=0/0x0000
+    # ./modbus-dump -d rtu:/dev/ttyS3,115200,8N1 1 1 2
+    modbus-dump: reg[1]=1/0x0001
+    modbus-dump: reg[2]=0/0x0000
 
 [Note that on Cosino Mega 2560 the Serial0 is connected with Cosino serial
 port /dev/ttyS3]
@@ -55,13 +55,13 @@ Now if you close the switch (just connect cable on GPIO 52 to 5V) and
 rerun the above command you should see that register 0x0001 changes
 from value 0x0000 to 0x0001:
 
-   # ./modbus-dump -d rtu:/dev/ttyS3,115200,8N1 1 1 2
-   modbus-dump: reg[1]=1/0x0001
-   modbus-dump: reg[2]=1/0x0001
+    # ./modbus-dump -d rtu:/dev/ttyS3,115200,8N1 1 1 2
+    modbus-dump: reg[1]=1/0x0001
+    modbus-dump: reg[2]=1/0x0001
 
 To turn off the led just use command:
 
-   # ./modbus-set -d rtu:/dev/ttyS3,115200,8N1 1 1 0
+    # ./modbus-set -d rtu:/dev/ttyS3,115200,8N1 1 1 0
 
 Debugging
 ---------
